@@ -6,6 +6,7 @@ import Link from "../link";
 import { Badge } from "./badge";
 import Rating from "./Rating";
 import AddToCartButton from "../AddToCartButton";
+import { formatCurrency } from "@/lib/formatters";
 const MenuCard = ({ card }: { card: any }) => {
   return (
     <div className="relative z-20 bg-card/60 hover:shadow-[0_4px_12px_rgba(255,255,255,0.1)] p-2 md:p-5 duration-150 rounded-2xl ">
@@ -23,12 +24,12 @@ const MenuCard = ({ card }: { card: any }) => {
             className="hover:underline hover:text-primary duration-200 line-clamp-2"
             href={`/${card.type.toLowerCase()}s/${card.id}/`}
           >
-            {card.cardTitle}
+            {card.title}
           </Link>
         </h4>
         {card.type === CardTypes.COURSE && (
           <Badge variant={"secondary"} className="bg-button">
-            {card.basePrice}
+            {formatCurrency( card.basePrice)}
           </Badge>
         )}
         {card.type === CardTypes.ARTICLE && (
@@ -38,7 +39,7 @@ const MenuCard = ({ card }: { card: any }) => {
         )}
       </div>
       <div>
-        <p className="line-clamp-3 leading-relaxed tracking-wide text-card-foreground mb-5 min-h-10">
+        <p className="line-clamp-3 leading-relaxed tracking-wide text-card-foreground mb-5 h-10">
           {card.des}
         </p>
         {card.type === CardTypes.COURSE ? (

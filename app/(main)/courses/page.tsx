@@ -17,11 +17,11 @@ const Courses = async () => {
           key={course.id}
           card={{
             type: CardTypes.COURSE,
-            cardTitle: course.title,
+            title: course.title,
             des: course.description,
             imgSrc: course.image,
             id: course.id,
-            basePrice: formatCurrency(course.basePrice),
+            basePrice: course.basePrice,
           }}
         />
       );

@@ -29,11 +29,11 @@ const page = async ({ params }: { params: Promise<{id: string}> }) => {
         key={course.id}
         card={{
           type: CardTypes.COURSE,
-          cardTitle: course.title,
+          title: course.title,
           des: course.description,
           imgSrc: course.image,
           id: course.id,
-          basePrice: formatCurrency(course.basePrice),
+          basePrice: course.basePrice,
         }}
       />
     );
@@ -46,7 +46,7 @@ const page = async ({ params }: { params: Promise<{id: string}> }) => {
         key={article.id}
         card={{
           type: CardTypes.ARTICLE,
-          cardTitle: article.title,
+          title: article.title,
           des: article.description,
           createdAt: moment(article.createdAt).format("Do MMMM YYYY"),
           readingTime: article.readingTime,

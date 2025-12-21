@@ -16,7 +16,7 @@ const Articles = async() => {
       return  <MenuCard key={article.id}
       card={{
         type: CardTypes.ARTICLE,
-        cardTitle: article.title,
+        title: article.title,
         des: article.description,
         createdAt: moment(article.createdAt).format('Do MMMM YYYY'),
         readingTime: article.readingTime,
