@@ -11,8 +11,8 @@ const Hero = () => {
           <h5 className="">مرحبا بالجميع!</h5>
           <h3 className="group text-6xl gap-2 text-center basis-full md:text-right">
             <span className="text-white group-hover:text-pink-400 duration-200 ml-5">
-              أ/مريم   
-            </span>   
+              أ/مريم
+            </span>
             <span className="text-pink-400 group-hover:text-white duration-200">
               المطيري
             </span>
@@ -25,14 +25,15 @@ const Hero = () => {
           </p>
           <div className="m-auto md:m-0 flex gap-2.5">
             <Link href={`${Routes.COURSES}`}>
-              <Button className="rounded-full bg-button cursor-pointer">تصفح الدورات</Button>
+              <Button className="rounded-full bg-button cursor-pointer">
+                تصفح الدورات
+              </Button>
             </Link>
-            <Button
-              className="bg-primary hover:bg-primary-hover rounded-full cursor-pointer"
-            
-            >
-              تحميل السيرة الذاتية
-            </Button>
+            <Link href={`${Routes.ARTICLES}`}>
+              <Button className="bg-primary hover:bg-primary-hover rounded-full cursor-pointer">
+                 تصفح المقالات 
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="relative w-40 h-40 animate-[spin_5s_linear_infinite]">
