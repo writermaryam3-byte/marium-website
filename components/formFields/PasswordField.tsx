@@ -5,9 +5,10 @@ import { Label } from "../ui/label";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 // import { ValidationErrors } from "@/validations/auth";
 import { IFormField } from "@/app/types/interfaces";
+import { ValidationErrors } from "@/validations/auth";
 
 interface Props extends IFormField {
-  error: {name:"ValidationErrors"};
+  error: ValidationErrors;
 }
 interface IState {
   showPassword: boolean;
