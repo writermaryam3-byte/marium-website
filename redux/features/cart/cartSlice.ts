@@ -9,7 +9,10 @@ export type CartItem = {
   id: string;
 };
 type CartState = { items: CartItem[] };
-const initialCartItems = localStorage.getItem("cartItems")
+let initialCartItems = "[]"
+if (typeof window !== 'undefined') {
+ initialCartItems = localStorage.getItem("cartItems")|| "[]"
+}
 const initialState: CartState = {
   items: initialCartItems?JSON.parse(initialCartItems):[],
 };
