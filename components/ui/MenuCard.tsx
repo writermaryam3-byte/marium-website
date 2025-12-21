@@ -38,7 +38,7 @@ const MenuCard = ({ card }: { card: any }) => {
         )}
       </div>
       <div>
-        <p className="line-clamp-3 leading-relaxed tracking-wide text-card-foreground mb-5">
+        <p className="line-clamp-3 leading-relaxed tracking-wide text-card-foreground mb-5 min-h-10">
           {card.des}
         </p>
         {card.type === CardTypes.COURSE ? (
