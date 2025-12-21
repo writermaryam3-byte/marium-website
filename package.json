@@ -6,7 +6,7 @@
     "generate": "npx prisma generate",
     "migrate": "npx prisma migrate",
     "dev": "next dev",
-    "build": "npm run generate && npm run migrate && next build",
+    "build": "npm run generate && npm run migrate deploy && next build",
     "start": "next start"
   },
   "dependencies": {
