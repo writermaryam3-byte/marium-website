@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { ReactNode, useMemo, useState } from "react";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -18,7 +18,7 @@ import { formatCurrency } from "@/lib/formatters";
 import { Course } from "@/lib/generated/prisma/client";
 import { useAppDispatch } from "@/redux/hooks";
 import { addCartItem } from "@/redux/features/cart/cartSlice";
-const AddToCartButton = ({ product }: { product: Course }) => {
+const AddToCartButton = ({ product, children, className }: { product: Course, children: ReactNode, className?: string }) => {
   const [count, setCount] = useState(1);
   const dispatch = useAppDispatch()
   // const [totalPrice, setTotalPrice] = useState(count * product.basePrice);
@@ -48,10 +48,10 @@ const AddToCartButton = ({ product }: { product: Course }) => {
   }
   return (
     <Dialog>
-      <form>
+      <form className="flex-1!">
         <DialogTrigger asChild>
-          <Button className="bg-button px-6 py-3 rounded-2xl cursor-pointer text-xl">
-            عرض تفاصيل الشراء
+          <Button className={`${className||"bg-button px-6 py-3 rounded-2xl cursor-pointer text-xl"}`}>
+            {children}
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">

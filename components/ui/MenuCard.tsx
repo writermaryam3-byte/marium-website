@@ -5,12 +5,13 @@ import { CardTypes, Routes } from "@/app/types/enums";
 import Link from "../link";
 import { Badge } from "./badge";
 import Rating from "./Rating";
+import AddToCartButton from "../AddToCartButton";
 const MenuCard = ({ card }: { card: any }) => {
   return (
     <div className="relative z-20 bg-card/60 hover:shadow-[0_4px_12px_rgba(255,255,255,0.1)] p-2 md:p-5 duration-150 rounded-2xl ">
       <div className="relative w-full h-48 m-auto">
         <Image
-          src={card.imgSrc||"/course.jfif"}
+          src={card.imgSrc || "/course.jfif"}
           alt="card-img"
           fill
           className="object-cover max-w-full"
@@ -54,10 +55,10 @@ const MenuCard = ({ card }: { card: any }) => {
       <div className="flex items-center justify-between mt-5">
         {card.type === CardTypes.COURSE ? (
           <>
-            <Button className="px-10! py-5! basis-75/100 cursor-pointer">
+            <AddToCartButton className="px-10! w-full py-5! basis-75/100 cursor-pointer" product={card}>
               <FaCartArrowDown />
               <span>اضف للسلة</span>
-            </Button>
+            </AddToCartButton>
             <Button
               className="basis-22/100 p-5! cursor-pointer"
               variant={"secondary"}
@@ -66,10 +67,7 @@ const MenuCard = ({ card }: { card: any }) => {
             </Button>
           </>
         ) : (
-          <Link
-            className="basis-full"
-            href={`${Routes.ARTICLES}/${card?.id}`}
-          >
+          <Link className="basis-full" href={`${Routes.ARTICLES}/${card?.id}`}>
             <Button className="px-10! py-5! w-full cursor-pointer">
               <span>ابدأ القراءة</span>
             </Button>

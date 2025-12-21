@@ -74,7 +74,9 @@ const page = async ({ params }: { params: Promise<{id: string}> }) => {
           <div className="flex flex-col gap-4 basis-70/100 text-center md:text-right">
             <div className="flex flex-col md:flex-row gap-2 justify-between items-center">
               <h4 className="font-bold text-3xl">{course.title}</h4>
-              <AddToCartButton product={course} />
+              <AddToCartButton product={course}>
+                <span>عرض تفاصيل الشراء</span>
+              </AddToCartButton>
             </div>
             <div className="text-xl">
               <p className="text-gray-300 leading-relaxed tracking-wide">
