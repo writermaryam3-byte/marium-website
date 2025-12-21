@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 
-import CartProvider from "./providers/cartProvider";
 import SiteSessionProvider from "./providers/SiteSessionProvider";
 import ReduxProvider from "./providers/ReduxProvider";
 // const geistSans = Geist({
@@ -34,7 +33,6 @@ export default function RootLayout({
         <ReduxProvider>
 
         <SiteSessionProvider>
-          <CartProvider>
             <ToastContainer
               position="top-center"
               autoClose={2500}
@@ -48,7 +46,6 @@ export default function RootLayout({
               theme="dark"
             />
             {children}
-          </CartProvider>
         </SiteSessionProvider>
         </ReduxProvider>
         
