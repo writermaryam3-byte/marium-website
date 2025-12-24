@@ -122,6 +122,7 @@ export enum FormTypes {
   EDITUSER = "editUser",
   ADDCOURSE = "addCourse",
   ADDARTICLE = "addArticle",
-  CHECKOUT = "checkout"
+  CHECKOUT = "checkout",
+  NEWSLETTER = "newsletter"
   
 }

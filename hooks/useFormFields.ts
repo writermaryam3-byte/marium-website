@@ -228,6 +228,20 @@ const useFormFields = ({ slug }: IFormFieldsVariables) => {
       
     },
   ]
+  const newsletterFields = (): IFormField[]=>[
+    {
+      type: "email",
+      placeholder: "ادخل بريدك الالكتروني",
+      name: "email",
+
+    },
+    {
+      type: "text",
+      placeholder: "ادخل رقم الهاتف",
+      name: "phone",
+
+    },
+  ]
   const getFormFields = (): IFormField[] => {
     switch (slug) {
       case FormTypes.SIGNIN:
@@ -244,6 +258,8 @@ const useFormFields = ({ slug }: IFormFieldsVariables) => {
         return articleFields();
       case FormTypes.CHECKOUT:
         return checkoutFields();
+      case FormTypes.NEWSLETTER:
+        return newsletterFields();
       default:
         return [];
     }

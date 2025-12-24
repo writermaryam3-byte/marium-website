@@ -4,6 +4,7 @@ import "../globals.css";
 import Header from "@/components/Header/Header";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/server/auth";
+import Footer from "@/components/footer/Footer";
 
 
 
@@ -23,6 +24,7 @@ export default async function MainLayout({
     <div className="flex flex-col">
         <Header initialSession={initialSession}/>
         {children}
+        <Footer/>
     </div>
 
   );
