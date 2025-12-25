@@ -5,7 +5,7 @@ const Tweets = () => {
   return (
     <Container>
       <div className="flex flex-col">
-        <blockquote class="twitter-tweet" data-theme="dark">
+        <blockquote className="twitter-tweet" data-theme="dark">
           <p lang="ar" dir="rtl">
             اجازة الصيف يبغالها العاب جماعية ممتعة مثل هذي 😍{" "}
             <a href="https://t.co/nCi9X99Eo5">pic.twitter.com/nCi9X99Eo5</a>
@@ -18,7 +18,7 @@ const Tweets = () => {
         <script
           async
           src="https://platform.twitter.com/widgets.js"
-          charset="utf-8"
+          charSet="utf-8"
         ></script>
       </div>
     </Container>
