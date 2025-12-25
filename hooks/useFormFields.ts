@@ -183,7 +183,7 @@ const useFormFields = ({ slug }: IFormFieldsVariables) => {
     },
     {
       name: "content",
-      type: "textarea",
+      type: "markdown",
       label: "محتوي المقالة",
       placeholder: "ادخل محتوي المقالة",
     },

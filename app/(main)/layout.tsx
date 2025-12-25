@@ -5,6 +5,7 @@ import Header from "@/components/Header/Header";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/server/auth";
 import Footer from "@/components/footer/Footer";
+import Tweets from "@/components/Tweets/Tweets";
 
 
 
@@ -24,6 +25,7 @@ export default async function MainLayout({
     <div className="flex flex-col">
         <Header initialSession={initialSession}/>
         {children}
+        <Tweets/>
         <Footer/>
     </div>
 

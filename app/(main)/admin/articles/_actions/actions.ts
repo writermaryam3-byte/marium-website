@@ -6,7 +6,7 @@ import { articleSchema } from "@/validations/article";
 import { revalidatePath } from "next/cache";
 import z from "zod";
 
-export const addArticle = async (prvState: unknown, formData: FormData) => {
+export const addArticle = async (articleContent: string, prvState: unknown, formData: FormData) => {
   const validationRes = articleSchema.safeParse(
     Object.fromEntries(formData.entries())
   );
@@ -31,7 +31,7 @@ export const addArticle = async (prvState: unknown, formData: FormData) => {
       };
     const article = await db.article.create({
       data: {
-        content: validationRes.data.content,
+        content: articleContent,
         description: validationRes.data.description,
         readingTime: validationRes.data.readingTime,
         title: validationRes.data.title,
@@ -57,7 +57,7 @@ export const addArticle = async (prvState: unknown, formData: FormData) => {
   }
 };
 export const updateArticle = async (
-  articleId: string,
+  articleProps: {articleId: string, articleContent: string},
   prvState: unknown,
   formData: FormData
 ) => {
@@ -74,7 +74,7 @@ export const updateArticle = async (
   try {
     const article = await db.article.findUnique({
       where: {
-        id: articleId,
+        id: articleProps.articleId,
       },
     });
 
@@ -97,10 +97,10 @@ export const updateArticle = async (
       };
     const updatedArticle = await db.article.update({
       where: {
-        id: articleId,
+        id: articleProps.articleId,
       },
       data: {
-        content: validationRes.data.content,
+        content: articleProps.articleContent,
         description: validationRes.data.description,
         readingTime: validationRes.data.readingTime,
         title: validationRes.data.title,

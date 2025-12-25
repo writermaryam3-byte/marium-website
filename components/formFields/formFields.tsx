@@ -33,6 +33,7 @@ const FormFields = (props: Props) => {
     if (type === InputTypes.SELECT&&props.data) {
       return <Select {...props} data={props.data||[]} />;
     }
+    
     return <TextField {...props} />;
   };
 

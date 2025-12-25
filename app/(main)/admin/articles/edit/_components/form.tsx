@@ -1,14 +1,15 @@
 "use client";
-import { FormTypes } from "@/app/types/enums";
+import { FormTypes, InputTypes } from "@/app/types/enums";
 import FormFields from "@/components/formFields/formFields";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/ui/Loader";
 import useFormFields from "@/hooks/useFormFields";
 import { ValidationErrors } from "@/validations/auth";
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { updateArticle } from "../../_actions/actions";
 import { Article, Category, Course } from "@/lib/generated/prisma/client";
+import MDEditor, { ContextStore } from "@uiw/react-md-editor";
 
 const initialState: {
   message?: string;
@@ -22,11 +23,21 @@ const initialState: {
   formData: null,
 };
 const Form = ({ article, categories }: { article: Article|any, categories: Category[] }) => {
+  const [contentState, setContentState] = useState<string>(article.content||"");
   const [state, action, pending] = useActionState(
-    updateArticle.bind(null, article.id),
+    updateArticle.bind(null, {articleId: article.id, articleContent: contentState}),
     initialState
   );
   const { getFormFields } = useFormFields({ slug: FormTypes.ADDARTICLE });
+
+  const handleContentChange = (
+    value?: string,
+    e?: React.ChangeEvent<HTMLTextAreaElement>,
+    state?: ContextStore
+  ) => {
+    console.log(contentState)
+    e && setContentState(e.target.value);
+  };
   useEffect(() => {
     if (state.status === 200) {
       toast.success(state?.message);
@@ -40,7 +51,14 @@ const Form = ({ article, categories }: { article: Article|any, categories: Categ
         {getFormFields().map((field) => {
           const fieldValue =
             state?.formData?.get(field.name)?.toString() || article[field.name];
-          return (
+            if (field.type === InputTypes.MARKDOWN) {
+              return (
+                <div data-color-mode="dark" className="text-right">
+                  <MDEditor lang="ar" direction="rtl" dir="rtl"  value={contentState} onChange={handleContentChange} />
+                </div>
+              );
+            }
+            return (
             <FormFields
               key={field.name}
               {...field}

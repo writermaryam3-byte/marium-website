@@ -5,5 +5,4 @@ export const articleSchema = z.object({
     description: z.string("هذا الحقل مطلوب").trim(),
     categoryId: z.string("هذا الحقل مطلوب").trim(),
     readingTime: z.string("هذا القل مطلوب").trim(),
-    content: z.string("هذا الحقل مطلوب").trim(),
 })

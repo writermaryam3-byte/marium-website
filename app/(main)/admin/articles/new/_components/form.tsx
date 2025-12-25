@@ -1,14 +1,15 @@
 "use client";
-import { FormTypes, Pages, Routes } from "@/app/types/enums";
+import { FormTypes, InputTypes, Pages, Routes } from "@/app/types/enums";
 import FormFields from "@/components/formFields/formFields";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/ui/Loader";
 import useFormFields from "@/hooks/useFormFields";
 import { ValidationErrors } from "@/validations/auth";
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { addArticle } from "../../_actions/actions";
 import { Category } from "@/lib/generated/prisma/client";
+import MDEditor, { ContextStore } from "@uiw/react-md-editor";
 
 const initialState: {
   message?: string;
@@ -21,12 +22,18 @@ const initialState: {
   status: null,
   formData: null,
 };
-const Form = (
-  {categories}:{categories: Category[]}
-
-) => {
-  const [state, action, pending] = useActionState(addArticle, initialState);
+const Form = ({ categories }: { categories: Category[] }) => {
   const { getFormFields } = useFormFields({ slug: FormTypes.ADDARTICLE });
+  const [contentState, setContentState] = useState<string>("");
+  const [state, action, pending] = useActionState(addArticle.bind(null, contentState), initialState);
+  const handleContentChange = (
+    value?: string,
+    e?: React.ChangeEvent<HTMLTextAreaElement>,
+    state?: ContextStore
+  ) => {
+    console.log(contentState)
+    e && setContentState(e.target.value);
+  };
   useEffect(() => {
     if (state.status === 201) {
       toast.success(state?.message);
@@ -39,6 +46,13 @@ const Form = (
       <div className="flex flex-col gap-4">
         {getFormFields().map((field) => {
           const fieldValue = state?.formData?.get(field.name)?.toString();
+          if (field.type === InputTypes.MARKDOWN) {
+            return (
+              <div data-color-mode="dark" className="text-right">
+                <MDEditor lang="ar" direction="rtl" dir="rtl"  value={contentState} onChange={handleContentChange} />
+              </div>
+            );
+          }
           return (
             <FormFields
               key={field.name}

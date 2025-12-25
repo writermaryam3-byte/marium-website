@@ -25,25 +25,28 @@ const Form = () => {
     formData.forEach((value, key) => {
       data[key] = value.toString();
     });
-
     try {
       const validationRes = contactSchema.safeParse(
         Object.fromEntries(formData.entries())
       );
       if (!validationRes.success) {
         setError(z.flattenError(validationRes.error).fieldErrors);
-        return
-    }
+        console.log("not valid",
+        z.flattenError(validationRes.error).fieldErrors
+
+        )
+        return;
+      }
       const res = await sendEmail({
         from: "onboarding@resend.dev",
         to: "ziadzayd79@gmail.com",
-        subject: `رسالة من ${validationRes.data.name}`,
+        subject: `رسالة من ${validationRes.data.username}`,
         replyTo: validationRes.data.email,
         html: `<p>${validationRes.data.message}</p>`,
       });
       if (res.success) {
         toast.success(res.message);
-        return
+        return;
       } else {
         toast.error(res.message);
       }

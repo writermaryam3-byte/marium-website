@@ -8,10 +8,7 @@ export interface Email {
   html: string;
 }
 
-export interface CourseInCart {
-  slug: string;
-  count: number;
-}
+
 export interface IOption {
   label: string;
   value: string;
@@ -31,7 +28,8 @@ export interface IFormField {
     | "radio"
     | "select"
     | "hidden"
-    | "textarea";
+    | "textarea"
+    | "markdown";
   placeholder?: string;
   disabled?: boolean;
   autoFocus?: boolean;

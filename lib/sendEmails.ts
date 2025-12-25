@@ -23,6 +23,7 @@ const send = async (email: Email)=>{
 
 
 const sendEmail = async (email: Email)=>{
+    console.log("sen")
     return await send(email)
 }
 

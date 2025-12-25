@@ -19,7 +19,7 @@ const Header = ({ initialSession }: { initialSession: Session | null }) => {
 
   return (
     <header className="py-5">
-      <Container className="flex justify-between items-center">
+      <Container className="flex justify-between items-center b-[#2051b6]/60 rounded-full">
         <Link href={Routes.ROOT} className="w-10 h-10 relative cursor-pointer">
           <Image
             className="object-contain"

@@ -61,6 +61,7 @@ export enum InputTypes {
   WEEK = "week",
   HIDDEN = "hidden",
   MULTI_SELECT = "multi select",
+  MARKDOWN = "markdown"
 }
 
 export enum Navigate {

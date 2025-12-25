@@ -1,7 +1,7 @@
 import z from "zod";
 
 export const contactSchema = z.object({
-    name: z.string("لا يكمن ان يكون الحقل خاليا!").min(2, {
+    username: z.string("لا يكمن ان يكون الحقل خاليا!").min(2, {
       message: "يحب ان يكون الاسم علي الاقل من حرفين!",
     }),
     email: z.email("الرجاء ادخال بريد الكتروني صالح"),
